@@ -10,17 +10,15 @@
   :root {
     --red: #E8001A;
     --red-dark: #B30015;
-    --red-glow: rgba(232,0,26,0.25);
+    --red-glow: rgba(232,0,26,0.22);
     --white: #F5F2EE;
     --black: #0A0A0A;
     --gray-dark: #141414;
     --gray-mid: #1E1E1E;
-    --gray-light: #2C2C2C;
-    --text-muted: #888;
+    --text-muted: #777;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -32,510 +30,438 @@
     cursor: none;
   }
 
-  /* CUSTOM CURSOR */
+  /* CURSOR */
   .cursor {
-    position: fixed; width: 12px; height: 12px;
+    position: fixed; width: 10px; height: 10px;
     background: var(--red); border-radius: 50%;
     pointer-events: none; z-index: 9999;
     transform: translate(-50%, -50%);
-    transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+    transition: width 0.3s, height 0.3s;
   }
   .cursor-ring {
-    position: fixed; width: 36px; height: 36px;
-    border: 1px solid rgba(232,0,26,0.5); border-radius: 50%;
+    position: fixed; width: 34px; height: 34px;
+    border: 1px solid rgba(232,0,26,0.45); border-radius: 50%;
     pointer-events: none; z-index: 9998;
     transform: translate(-50%, -50%);
-    transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
   }
-  body:has(a:hover) .cursor, body:has(button:hover) .cursor { transform: translate(-50%,-50%) scale(2.5); background: var(--red-dark); }
-  body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 60px; height: 60px; }
 
-  /* NOISE OVERLAY */
+  /* NOISE */
   body::before {
     content: '';
     position: fixed; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 1; opacity: 0.6;
+    pointer-events: none; z-index: 1; opacity: 0.5;
   }
 
-  /* NAV */
+  /* ───── NAV ───── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 24px 60px;
+    padding: 22px 60px;
     display: flex; align-items: center; justify-content: space-between;
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    backdrop-filter: blur(20px);
-    background: rgba(10,10,10,0.7);
+    backdrop-filter: blur(18px);
+    background: rgba(10,10,10,0.75);
   }
   .logo {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px; letter-spacing: 0.15em;
-    color: var(--white);
+    font-size: 26px; letter-spacing: 0.18em; color: var(--white);
   }
   .logo span { color: var(--red); }
-  .nav-pill {
-    background: var(--gray-mid);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 100px;
-    padding: 10px 24px;
-    font-size: 13px; font-weight: 500; letter-spacing: 0.05em;
-    color: var(--white); text-decoration: none;
-    transition: all 0.3s;
-  }
-  .nav-pill:hover { background: var(--red); border-color: var(--red); }
 
-  /* HERO */
+  /* BOTÓN 1 — NAV */
+  .btn-nav {
+    background: transparent;
+    border: 1px solid rgba(232,0,26,0.5);
+    border-radius: 100px;
+    padding: 10px 26px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
+    color: var(--white); text-decoration: none;
+    transition: background 0.3s, border-color 0.3s;
+    cursor: none;
+  }
+  .btn-nav:hover { background: var(--red); border-color: var(--red); }
+
+  /* ───── HERO ───── */
   .hero {
     min-height: 100vh;
     display: flex; flex-direction: column; justify-content: center;
     padding: 140px 60px 80px;
     position: relative; overflow: hidden;
   }
-  .hero-grid-line {
-    position: absolute;
-    background: rgba(255,255,255,0.03);
+  .hero-line {
+    position: absolute; background: rgba(255,255,255,0.025);
   }
-  .hero-grid-line.v1 { left: 33%; top: 0; bottom: 0; width: 1px; }
-  .hero-grid-line.v2 { left: 66%; top: 0; bottom: 0; width: 1px; }
-  .hero-grid-line.h1 { top: 50%; left: 0; right: 0; height: 1px; }
+  .hero-line.v1 { left: 33%; top: 0; bottom: 0; width: 1px; }
+  .hero-line.v2 { left: 66%; top: 0; bottom: 0; width: 1px; }
+  .hero-line.h1 { top: 50%; left: 0; right: 0; height: 1px; }
 
   .hero-eyebrow {
     font-family: 'Courier Prime', monospace;
-    font-size: 11px; letter-spacing: 0.3em;
-    color: var(--red); text-transform: uppercase;
-    margin-bottom: 28px;
-    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; letter-spacing: 0.3em; color: var(--red);
+    text-transform: uppercase; margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
   }
   .hero-eyebrow::before {
-    content: ''; display: block;
-    width: 40px; height: 1px; background: var(--red);
+    content: ''; display: block; width: 36px; height: 1px; background: var(--red);
   }
 
   .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(72px, 10vw, 160px);
-    line-height: 0.9;
-    letter-spacing: -0.02em;
-    max-width: 900px;
+    font-size: clamp(68px, 10vw, 155px);
+    line-height: 0.88; letter-spacing: -0.01em;
+    max-width: 880px;
   }
   .hero h1 .outline {
-    -webkit-text-stroke: 1.5px var(--white);
-    color: transparent;
+    -webkit-text-stroke: 1.5px var(--white); color: transparent;
   }
   .hero h1 .red { color: var(--red); }
 
   .hero-sub {
     margin-top: 40px;
-    font-size: 17px; font-weight: 300; line-height: 1.7;
-    color: var(--text-muted); max-width: 480px;
+    font-size: 17px; font-weight: 300; line-height: 1.75;
+    color: var(--text-muted); max-width: 460px;
   }
 
-  .hero-cta {
-    margin-top: 56px;
-    display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
-  }
-  .btn-primary {
+  /* BOTÓN 2 — HERO (el botón principal del CTA) */
+  .hero-cta { margin-top: 52px; }
+  .btn-hero {
+    display: inline-flex; align-items: center; gap: 12px;
     background: var(--red); color: var(--white);
-    padding: 18px 40px; border: none;
+    padding: 20px 44px; text-decoration: none;
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; text-decoration: none;
-    cursor: none; position: relative; overflow: hidden;
-    transition: all 0.3s;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.09em;
+    text-transform: uppercase; cursor: none;
+    position: relative; overflow: hidden;
     clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+    transition: box-shadow 0.3s;
   }
-  .btn-primary::after {
+  .btn-hero::after {
     content: ''; position: absolute; inset: 0;
-    background: var(--white); transform: translateX(-101%);
+    background: var(--red-dark); transform: translateX(-101%);
     transition: transform 0.4s cubic-bezier(0.77,0,0.18,1);
-    mix-blend-mode: difference;
   }
-  .btn-primary:hover::after { transform: translateX(0); }
-  .btn-ghost {
-    color: var(--text-muted); font-size: 14px;
-    letter-spacing: 0.05em; text-decoration: none;
-    display: flex; align-items: center; gap: 8px;
-    transition: color 0.3s;
-  }
-  .btn-ghost:hover { color: var(--white); }
-  .btn-ghost .arrow { font-size: 20px; transition: transform 0.3s; }
-  .btn-ghost:hover .arrow { transform: translateX(6px); }
+  .btn-hero:hover::after { transform: translateX(0); }
+  .btn-hero span { position: relative; z-index: 1; }
+  .btn-hero:hover { box-shadow: 0 0 40px var(--red-glow); }
 
+  .hero-scroll {
+    margin-top: 60px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px; letter-spacing: 0.25em; color: var(--text-muted);
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-scroll::before {
+    content: ''; display: block; width: 1px; height: 40px; background: var(--text-muted);
+    animation: scroll-line 2s ease-in-out infinite;
+  }
+  @keyframes scroll-line { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+  /* Rotating badge */
   .hero-badge {
     position: absolute; right: 60px; bottom: 80px;
-    width: 130px; height: 130px;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    animation: spin 20s linear infinite;
+    width: 120px; height: 120px;
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 50%;
+    animation: spin 22s linear infinite;
   }
   .hero-badge svg { width: 100%; height: 100%; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .hero-badge-center {
     position: absolute; right: 60px; bottom: 80px;
-    width: 130px; height: 130px;
+    width: 120px; height: 120px;
     display: flex; align-items: center; justify-content: center;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px; letter-spacing: 0.1em; color: var(--red);
-    text-align: center; line-height: 1.3;
-    pointer-events: none;
+    font-size: 12px; letter-spacing: 0.1em; color: var(--red);
+    text-align: center; line-height: 1.4; pointer-events: none;
   }
 
-  /* MARQUEE */
+  /* ───── MARQUEE ───── */
   .marquee-bar {
-    border-top: 1px solid rgba(255,255,255,0.07);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    padding: 18px 0; overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 16px 0; overflow: hidden;
     background: var(--gray-dark);
   }
   .marquee-track {
     display: flex; gap: 48px; width: max-content;
-    animation: marquee 30s linear infinite;
+    animation: marquee 28s linear infinite;
   }
   .marquee-item {
     font-family: 'Courier Prime', monospace;
-    font-size: 12px; letter-spacing: 0.25em;
+    font-size: 11px; letter-spacing: 0.25em;
     text-transform: uppercase; color: var(--text-muted);
     white-space: nowrap; display: flex; align-items: center; gap: 48px;
   }
-  .marquee-item::after { content: '◆'; color: var(--red); font-size: 8px; }
+  .marquee-item::after { content: '◆'; color: var(--red); font-size: 7px; }
   @keyframes marquee { to { transform: translateX(-50%); } }
 
-  /* PROBLEMS SECTION */
-  .section { padding: 120px 60px; }
+  /* ───── SECTION COMMON ───── */
+  .section { padding: 110px 60px; }
   .section-label {
     font-family: 'Courier Prime', monospace;
-    font-size: 11px; letter-spacing: 0.3em;
-    color: var(--red); text-transform: uppercase; margin-bottom: 16px;
+    font-size: 11px; letter-spacing: 0.28em; color: var(--red);
+    text-transform: uppercase; margin-bottom: 14px;
   }
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 5vw, 72px);
-    line-height: 1; letter-spacing: 0.02em;
-    margin-bottom: 60px;
+    font-size: clamp(38px, 5vw, 68px);
+    line-height: 1; letter-spacing: 0.02em; margin-bottom: 56px;
   }
-  .section-title .outline {
-    -webkit-text-stroke: 1px var(--white); color: transparent;
-  }
+  .section-title .outline { -webkit-text-stroke: 1px var(--white); color: transparent; }
 
+  /* ───── PROBLEMAS ───── */
   .problems-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.06);
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.05);
   }
   .problem-card {
-    background: var(--black);
-    padding: 48px 40px;
-    position: relative; overflow: hidden;
-    transition: background 0.4s;
+    background: var(--black); padding: 44px 36px;
+    position: relative; overflow: hidden; transition: background 0.4s;
   }
   .problem-card:hover { background: var(--gray-dark); }
   .problem-card::before {
     content: ''; position: absolute; top: 0; left: 0;
-    width: 3px; height: 0;
-    background: var(--red);
+    width: 3px; height: 0; background: var(--red);
     transition: height 0.4s cubic-bezier(0.77,0,0.18,1);
   }
   .problem-card:hover::before { height: 100%; }
   .problem-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 64px; color: rgba(255,255,255,0.04);
-    line-height: 1; margin-bottom: 20px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 60px;
+    color: rgba(255,255,255,0.04); line-height: 1; margin-bottom: 18px;
     transition: color 0.4s;
   }
-  .problem-card:hover .problem-num { color: rgba(232,0,26,0.1); }
-  .problem-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
-  .problem-text { font-size: 14px; line-height: 1.7; color: var(--text-muted); }
+  .problem-card:hover .problem-num { color: rgba(232,0,26,0.09); }
+  .problem-title { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+  .problem-text { font-size: 14px; line-height: 1.75; color: var(--text-muted); }
 
-  /* SOLUTION SECTION */
+  /* ───── SOLUCIÓN ───── */
   .solution-section {
-    padding: 120px 60px;
-    background: var(--gray-dark);
-    position: relative; overflow: hidden;
+    padding: 110px 60px; background: var(--gray-dark); position: relative; overflow: hidden;
   }
   .solution-section::before {
-    content: '';
-    position: absolute; top: -200px; right: -200px;
-    width: 600px; height: 600px;
+    content: ''; position: absolute; top: -180px; right: -180px;
+    width: 560px; height: 560px;
     background: radial-gradient(circle, var(--red-glow) 0%, transparent 70%);
     pointer-events: none;
   }
   .solution-layout {
     display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
   }
+  .solution-features { display: flex; flex-direction: column; gap: 20px; margin-top: 40px; }
+  .feature-row {
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: 22px; border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02); transition: all 0.3s;
+  }
+  .feature-row:hover { border-color: rgba(232,0,26,0.35); background: rgba(232,0,26,0.04); }
+  .feature-icon {
+    width: 42px; height: 42px; background: var(--red); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 18px;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+  .feature-info h4 { font-size: 15px; font-weight: 600; margin-bottom: 5px; }
+  .feature-info p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+  /* Visual orbital */
   .solution-visual {
     position: relative; aspect-ratio: 1;
     display: flex; align-items: center; justify-content: center;
   }
-  .solution-ring {
+  .sol-ring {
     position: absolute; border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.06);
     animation: pulse-ring 3s ease-in-out infinite;
   }
-  .solution-ring:nth-child(1) { width: 80%; height: 80%; animation-delay: 0s; }
-  .solution-ring:nth-child(2) { width: 60%; height: 60%; animation-delay: 0.5s; border-color: rgba(232,0,26,0.2); }
-  .solution-ring:nth-child(3) { width: 40%; height: 40%; animation-delay: 1s; }
-  @keyframes pulse-ring {
-    0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.05); opacity: 1; }
-  }
-  .solution-core {
-    width: 160px; height: 160px; border-radius: 50%;
-    background: var(--red);
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 4px;
-    box-shadow: 0 0 60px var(--red-glow), 0 0 120px var(--red-glow);
-    z-index: 2;
-  }
-  .solution-core-num {
-    font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1;
-  }
-  .solution-core-label { font-size: 11px; letter-spacing: 0.15em; opacity: 0.8; }
-
-  .solution-orbits {
-    position: absolute; inset: 0;
-    animation: spin-slow 15s linear infinite;
+  .sol-ring:nth-child(1) { width: 80%; height: 80%; }
+  .sol-ring:nth-child(2) { width: 60%; height: 60%; animation-delay: 0.6s; border-color: rgba(232,0,26,0.18); }
+  .sol-ring:nth-child(3) { width: 40%; height: 40%; animation-delay: 1.2s; }
+  @keyframes pulse-ring { 0%,100%{transform:scale(1);opacity:0.5} 50%{transform:scale(1.05);opacity:1} }
+  .sol-orbits {
+    position: absolute; inset: 0; animation: spin-slow 14s linear infinite;
   }
   @keyframes spin-slow { to { transform: rotate(360deg); } }
   .orbit-dot {
-    position: absolute; width: 10px; height: 10px;
-    background: var(--red); border-radius: 50%;
-    box-shadow: 0 0 12px var(--red);
+    position: absolute; width: 9px; height: 9px;
+    background: var(--red); border-radius: 50%; box-shadow: 0 0 10px var(--red);
   }
   .orbit-dot:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
   .orbit-dot:nth-child(2) { top: 50%; right: 0; transform: translateY(-50%); }
   .orbit-dot:nth-child(3) { bottom: 0; left: 50%; transform: translateX(-50%); }
-
-  .solution-features { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
-  .feature-row {
-    display: flex; gap: 20px; align-items: flex-start;
-    padding: 24px; border: 1px solid rgba(255,255,255,0.06);
-    background: rgba(255,255,255,0.02);
-    transition: all 0.3s; cursor: default;
-  }
-  .feature-row:hover { border-color: var(--red); background: rgba(232,0,26,0.05); }
-  .feature-icon {
-    width: 44px; height: 44px; background: var(--red);
+  .sol-core {
+    width: 150px; height: 150px; border-radius: 50%;
+    background: var(--red); z-index: 2;
     display: flex; align-items: center; justify-content: center;
-    font-size: 20px; flex-shrink: 0;
-    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    flex-direction: column; gap: 2px;
+    box-shadow: 0 0 55px var(--red-glow), 0 0 110px var(--red-glow);
   }
-  .feature-info h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-  .feature-info p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .sol-core-num { font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; }
+  .sol-core-label { font-size: 10px; letter-spacing: 0.18em; opacity: 0.8; }
 
-  /* PROCESS */
-  .process-section { padding: 120px 60px; background: var(--black); }
-  .process-steps { display: flex; gap: 0; position: relative; margin-top: 60px; }
+  /* ───── PROCESO ───── */
+  .process-section { padding: 110px 60px; background: var(--black); }
+  .process-steps { display: flex; position: relative; margin-top: 56px; }
   .process-steps::before {
-    content: ''; position: absolute; top: 32px; left: 32px; right: 32px; height: 1px;
-    background: linear-gradient(90deg, var(--red) 0%, rgba(232,0,26,0.3) 100%);
+    content: ''; position: absolute; top: 30px; left: 30px; right: 30px; height: 1px;
+    background: linear-gradient(90deg, var(--red), rgba(232,0,26,0.2));
   }
-  .process-step {
-    flex: 1; padding: 0 24px; position: relative; padding-top: 80px;
-  }
+  .process-step { flex: 1; padding: 0 20px; position: relative; padding-top: 72px; }
   .step-num {
-    position: absolute; top: 0; left: 24px;
-    width: 64px; height: 64px;
+    position: absolute; top: 0; left: 20px;
+    width: 60px; height: 60px;
     background: var(--black); border: 2px solid var(--red);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--red);
-    transition: background 0.3s;
+    font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: var(--red);
+    transition: background 0.3s, color 0.3s;
   }
   .process-step:hover .step-num { background: var(--red); color: var(--white); }
-  .step-title { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
-  .step-text { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+  .step-title { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+  .step-text { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
 
-  /* CONTACT BUBBLE */
+  /* ───── BURBUJA CONTACTO (centro de página) ───── */
   .contact-section {
-    padding: 120px 60px;
+    padding: 110px 60px;
     background: var(--gray-dark);
     display: flex; flex-direction: column; align-items: center;
     text-align: center; position: relative; overflow: hidden;
   }
   .contact-section::before {
-    content: '';
-    position: absolute; bottom: -300px; left: 50%;
+    content: ''; position: absolute; bottom: -280px; left: 50%;
     transform: translateX(-50%);
-    width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(232,0,26,0.12) 0%, transparent 65%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(232,0,26,0.1) 0%, transparent 65%);
     pointer-events: none;
   }
 
-  .contact-bubble-wrapper {
-    position: relative; z-index: 2; margin-top: 60px;
-  }
+  /* BOTÓN 3 — BURBUJA CENTRAL */
+  .contact-bubble-wrapper { position: relative; z-index: 2; margin-top: 56px; }
   .contact-bubble {
     background: var(--black);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 24px;
-    padding: 64px 80px;
-    max-width: 640px; width: 100%;
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 20px;
+    padding: 60px 72px;
+    max-width: 620px; width: 100%;
     position: relative; overflow: hidden;
-    transition: all 0.4s; cursor: none;
+    transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s;
+    display: block; text-decoration: none; color: inherit; cursor: none;
   }
   .contact-bubble:hover {
     border-color: var(--red);
-    box-shadow: 0 0 80px rgba(232,0,26,0.2);
-    transform: translateY(-4px);
+    box-shadow: 0 0 70px rgba(232,0,26,0.18);
+    transform: translateY(-5px);
   }
   .contact-bubble::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(232,0,26,0.05) 0%, transparent 60%);
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(232,0,26,0.04) 0%, transparent 55%);
     opacity: 0; transition: opacity 0.4s;
   }
   .contact-bubble:hover::before { opacity: 1; }
   .bubble-tag {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(232,0,26,0.12); border: 1px solid rgba(232,0,26,0.3);
-    border-radius: 100px; padding: 6px 16px;
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--red); margin-bottom: 28px;
+    background: rgba(232,0,26,0.1); border: 1px solid rgba(232,0,26,0.28);
+    border-radius: 100px; padding: 5px 16px;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 26px;
     font-family: 'Courier Prime', monospace;
   }
-  .bubble-tag::before { content: '●'; font-size: 8px; animation: blink 1.5s infinite; }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+  .bubble-tag::before { content: '●'; font-size: 7px; animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
   .bubble-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px; line-height: 1; margin-bottom: 16px; letter-spacing: 0.03em;
+    font-size: 40px; line-height: 1; margin-bottom: 14px; letter-spacing: 0.03em;
   }
-  .bubble-text { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 36px; }
-  .bubble-email {
-    display: inline-flex; align-items: center; gap: 12px;
-    background: var(--red); color: var(--white);
-    padding: 18px 40px; text-decoration: none;
+  .bubble-text {
+    font-size: 15px; color: var(--text-muted); line-height: 1.75; margin-bottom: 34px;
+  }
+  .bubble-email-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--red);
+    padding: 16px 36px;
     font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    transition: all 0.3s; position: relative; overflow: hidden;
+    color: var(--white);
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    position: relative; overflow: hidden; transition: box-shadow 0.3s;
   }
-  .bubble-email::after {
-    content: ''; position: absolute; inset: 0;
-    background: var(--red-dark); transform: scaleX(0); transform-origin: right;
-    transition: transform 0.4s cubic-bezier(0.77,0,0.18,1);
+  .contact-bubble:hover .bubble-email-label {
+    box-shadow: 0 0 30px var(--red-glow);
   }
-  .bubble-email:hover::after { transform: scaleX(1); transform-origin: left; }
-  .bubble-email span { position: relative; z-index: 1; }
 
-  /* STATS */
-  .stats-bar {
-    padding: 60px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    background: var(--gray-mid);
-  }
-  .stat-item {
-    padding: 20px 40px;
-    border-right: 1px solid rgba(255,255,255,0.06);
-    text-align: center;
-  }
-  .stat-item:last-child { border-right: none; }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif; font-size: 56px;
-    color: var(--red); line-height: 1;
-  }
-  .stat-label { font-size: 12px; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; margin-top: 8px; }
-
-  /* TESTIMONIALS */
-  .testimonials { padding: 120px 60px; background: var(--black); }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
-  .testimonial-card {
-    background: var(--gray-dark); border: 1px solid rgba(255,255,255,0.06);
-    padding: 40px; position: relative; transition: all 0.3s;
-  }
-  .testimonial-card:hover { border-color: rgba(232,0,26,0.4); transform: translateY(-4px); }
-  .testimonial-quote {
-    font-family: 'Bebas Neue', sans-serif; font-size: 80px; color: var(--red);
-    line-height: 0.7; margin-bottom: 20px; opacity: 0.4;
-  }
-  .testimonial-text { font-size: 14px; line-height: 1.8; color: var(--text-muted); margin-bottom: 28px; }
-  .testimonial-author { display: flex; align-items: center; gap: 14px; }
-  .author-avatar {
-    width: 42px; height: 42px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif; font-size: 18px;
-  }
-  .author-name { font-size: 14px; font-weight: 600; }
-  .author-role { font-size: 12px; color: var(--text-muted); }
-
-  /* FOOTER */
+  /* ───── FOOTER ───── */
   footer {
-    background: var(--gray-dark);
-    border-top: 1px solid rgba(255,255,255,0.06);
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 52px 60px 32px;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: start;
   }
-  .footer-main {
-    padding: 80px 60px 60px;
-    display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px;
-  }
-  .footer-brand { }
   .footer-logo {
-    font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.15em; margin-bottom: 16px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 28px;
+    letter-spacing: 0.18em; margin-bottom: 12px;
   }
   .footer-logo span { color: var(--red); }
-  .footer-desc { font-size: 13px; color: var(--text-muted); line-height: 1.8; max-width: 280px; margin-bottom: 32px; }
-  .footer-contact-link {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: rgba(232,0,26,0.1); border: 1px solid rgba(232,0,26,0.25);
-    padding: 14px 24px; text-decoration: none; color: var(--white);
-    font-size: 13px; letter-spacing: 0.05em; transition: all 0.3s;
+  .footer-desc {
+    font-size: 13px; color: var(--text-muted); line-height: 1.8;
+    max-width: 300px; margin-bottom: 28px;
   }
-  .footer-contact-link:hover { background: var(--red); border-color: var(--red); }
-  .footer-contact-link .icon { font-size: 16px; }
 
+  /* BOTÓN 4 — FOOTER (el pie de página que pediste) */
+  .footer-email-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(232,0,26,0.08); border: 1px solid rgba(232,0,26,0.22);
+    padding: 14px 22px; text-decoration: none; color: var(--white);
+    font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+    transition: background 0.3s, border-color 0.3s; cursor: none;
+  }
+  .footer-email-link:hover { background: var(--red); border-color: var(--red); }
+  .footer-email-link .icon { font-size: 15px; }
+
+  .footer-right { }
   .footer-col-title {
     font-family: 'Courier Prime', monospace;
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--red); margin-bottom: 24px;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 20px;
   }
-  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .footer-links a {
-    font-size: 14px; color: var(--text-muted); text-decoration: none;
-    transition: color 0.3s; display: flex; align-items: center; gap: 8px;
+  .footer-services {
+    list-style: none; display: flex; flex-direction: column; gap: 10px;
   }
-  .footer-links a::before { content: '→'; font-size: 12px; color: var(--red); opacity: 0; transform: translateX(-8px); transition: all 0.3s; }
-  .footer-links a:hover { color: var(--white); }
-  .footer-links a:hover::before { opacity: 1; transform: translateX(0); }
+  .footer-services li {
+    font-size: 14px; color: var(--text-muted);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .footer-services li::before { content: '—'; color: var(--red); font-size: 12px; }
 
   .footer-bottom {
-    padding: 24px 60px;
+    grid-column: 1 / -1;
     border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 24px;
     display: flex; align-items: center; justify-content: space-between;
   }
   .footer-bottom-text { font-size: 12px; color: var(--text-muted); }
-  .footer-bottom-cta {
-    font-size: 12px; color: var(--text-muted); text-decoration: none;
-    letter-spacing: 0.1em; transition: color 0.3s;
-  }
-  .footer-bottom-cta:hover { color: var(--red); }
+  .footer-bottom-mail { font-size: 12px; color: var(--text-muted); letter-spacing: 0.06em; }
 
-  /* SCROLL REVEAL */
-  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  /* ───── REVEAL ───── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
 
-  /* RESPONSIVE */
+  /* ───── RESPONSIVE ───── */
   @media (max-width: 1024px) {
-    nav { padding: 20px 30px; }
-    .hero { padding: 120px 30px 60px; }
-    .section, .solution-section, .process-section, .contact-section, .testimonials { padding: 80px 30px; }
-    .stats-bar { padding: 40px 30px; }
+    nav { padding: 18px 28px; }
+    .hero, .section, .solution-section, .process-section, .contact-section { padding: 90px 28px 70px; }
+    footer { padding: 44px 28px 28px; }
     .problems-grid { grid-template-columns: 1fr; }
-    .solution-layout { grid-template-columns: 1fr; gap: 40px; }
+    .solution-layout { grid-template-columns: 1fr; }
     .solution-visual { display: none; }
-    .process-steps { flex-direction: column; gap: 40px; }
+    .process-steps { flex-direction: column; gap: 36px; }
     .process-steps::before { display: none; }
-    .process-step { padding-top: 0; padding-left: 90px; }
+    .process-step { padding-top: 0; padding-left: 80px; }
     .step-num { top: 0; left: 0; }
-    .stats-bar { grid-template-columns: repeat(2, 1fr); }
-    .stat-item:nth-child(2) { border-right: none; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .footer-main { grid-template-columns: 1fr; gap: 40px; padding: 60px 30px; }
-    .footer-bottom { padding: 20px 30px; flex-direction: column; gap: 12px; text-align: center; }
-    .contact-bubble { padding: 40px 30px; }
+    footer { grid-template-columns: 1fr; gap: 36px; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    .contact-bubble { padding: 40px 28px; }
     .hero-badge, .hero-badge-center { display: none; }
   }
 </style>
@@ -545,42 +471,53 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
+<!-- ═══ NAV ═══ -->
 <nav>
   <div class="logo">AUTO<span>MAKE</span></div>
-  <a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener" class="nav-pill">Contactar ahora →</a>
+  <!-- BOTÓN 1: Nav -->
+  <a class="btn-nav" onclick="openMail()">Contactar ahora →</a>
 </nav>
 
-<!-- HERO -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="hero-grid-line v1"></div>
-  <div class="hero-grid-line v2"></div>
-  <div class="hero-grid-line h1"></div>
+  <div class="hero-line v1"></div>
+  <div class="hero-line v2"></div>
+  <div class="hero-line h1"></div>
 
   <div class="hero-eyebrow">Agencia de Automatizaciones</div>
+
   <h1 class="reveal">
     TU NEGOCIO<br>
     <span class="outline">SIN</span><br>
     <span class="red">LÍMITES</span>
   </h1>
-  <p class="hero-sub reveal reveal-delay-1">Diseñamos sistemas de automatización que eliminan el trabajo repetitivo y multiplican tus resultados. Tu equipo enfocado en lo que importa.</p>
+
+  <p class="hero-sub reveal reveal-delay-1">
+    Diseñamos sistemas de automatización que eliminan el trabajo repetitivo y multiplican tus resultados. Tu equipo enfocado en lo que realmente importa.
+  </p>
+
+  <!-- BOTÓN 2: Hero CTA -->
   <div class="hero-cta reveal reveal-delay-2">
-    <a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener" class="btn-primary">Quiero automatizar mi negocio</a>
-    <a href="#proceso" class="btn-ghost">Ver cómo funciona <span class="arrow">→</span></a>
+    <a class="btn-hero" onclick="openMail()">
+      <span>✉</span>
+      <span>Quiero automatizar mi negocio</span>
+    </a>
   </div>
 
+  <div class="hero-scroll reveal reveal-delay-3">Scroll para explorar</div>
+
   <div class="hero-badge">
-    <svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
-      <defs><path id="circle" d="M 65,65 m -50,0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"/></defs>
-      <text fill="#888" font-size="11" font-family="Courier Prime" letter-spacing="8">
-        <textPath href="#circle">AUTOMATIZACIÓN · INNOVACIÓN · CRECIMIENTO ·</textPath>
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <defs><path id="cp" d="M 60,60 m -44,0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0"/></defs>
+      <text fill="#666" font-size="10.5" font-family="Courier Prime" letter-spacing="7.2">
+        <textPath href="#cp">AUTOMATIZACIÓN · INNOVACIÓN · EFICIENCIA ·</textPath>
       </text>
     </svg>
   </div>
   <div class="hero-badge-center">AUTO<br>MAKE</div>
 </section>
 
-<!-- MARQUEE -->
+<!-- ═══ MARQUEE ═══ -->
 <div class="marquee-bar">
   <div class="marquee-track">
     <div class="marquee-item">Automatización de Procesos</div>
@@ -589,18 +526,18 @@
     <div class="marquee-item">Integración de Sistemas</div>
     <div class="marquee-item">IA Aplicada</div>
     <div class="marquee-item">Chatbots Avanzados</div>
-    <div class="marquee-item">Reporting Automático</div>
+    <div class="marquee-item">Reportes Automáticos</div>
     <div class="marquee-item">Automatización de Procesos</div>
     <div class="marquee-item">CRM Inteligente</div>
     <div class="marquee-item">Flujos de Email Marketing</div>
     <div class="marquee-item">Integración de Sistemas</div>
     <div class="marquee-item">IA Aplicada</div>
     <div class="marquee-item">Chatbots Avanzados</div>
-    <div class="marquee-item">Reporting Automático</div>
+    <div class="marquee-item">Reportes Automáticos</div>
   </div>
 </div>
 
-<!-- PROBLEMS -->
+<!-- ═══ PROBLEMAS ═══ -->
 <section class="section">
   <div class="section-label">El Problema</div>
   <h2 class="section-title reveal">¿TE IDENTIFICAS<br>CON <span class="outline">ALGUNO</span> DE ESTOS?</h2>
@@ -613,7 +550,7 @@
     <div class="problem-card reveal reveal-delay-1">
       <div class="problem-num">02</div>
       <h3 class="problem-title">Errores humanos costosos</h3>
-      <p class="problem-text">Los procesos manuales generan inconsistencias que afectan la calidad de tu servicio, dañan tu reputación y cuestan dinero real.</p>
+      <p class="problem-text">Los procesos manuales generan inconsistencias que afectan la calidad de tu servicio y cuestan dinero real con cada fallo.</p>
     </div>
     <div class="problem-card reveal reveal-delay-2">
       <div class="problem-num">03</div>
@@ -623,28 +560,30 @@
     <div class="problem-card reveal reveal-delay-3">
       <div class="problem-num">04</div>
       <h3 class="problem-title">Imposible escalar sin contratar</h3>
-      <p class="problem-text">Cada vez que creces, necesitas más personal para las mismas tareas. La automatización rompe esa ecuación y te permite escalar sin escalar costos.</p>
+      <p class="problem-text">Cada vez que creces, necesitas más personal para las mismas tareas. La automatización rompe esa ecuación.</p>
     </div>
     <div class="problem-card reveal reveal-delay-4">
       <div class="problem-num">05</div>
       <h3 class="problem-title">Clientes que se enfrían</h3>
-      <p class="problem-text">Sin seguimiento automático, los leads se pierden. Sin nurturing, los clientes potenciales olvidan que exististe antes de comprar.</p>
+      <p class="problem-text">Sin seguimiento automático, los leads se pierden. Sin nurturing, los prospectos olvidan que exististe antes de comprar.</p>
     </div>
     <div class="problem-card reveal">
       <div class="problem-num">06</div>
-      <h3 class="problem-title">Reportes que llegan tarde</h3>
-      <p class="problem-text">Tomar decisiones sin datos en tiempo real es adivinar. La automatización pone números exactos frente a ti cuando los necesitas.</p>
+      <h3 class="problem-title">Decisiones sin datos claros</h3>
+      <p class="problem-text">Tomar decisiones sin información en tiempo real es adivinar. La automatización pone los números frente a ti cuando los necesitas.</p>
     </div>
   </div>
 </section>
 
-<!-- SOLUTION -->
+<!-- ═══ SOLUCIÓN ═══ -->
 <section class="solution-section">
   <div class="solution-layout">
     <div>
       <div class="section-label">La Solución</div>
       <h2 class="section-title reveal">AUTOMATIZA.<br><span class="outline">LIBERA.</span><br>CRECE.</h2>
-      <p style="color: var(--text-muted); font-size: 16px; line-height: 1.8; margin-bottom: 40px;" class="reveal">En AutoMake diseñamos, construimos e implementamos sistemas de automatización a medida que transforman la forma en que opera tu negocio.</p>
+      <p style="color:var(--text-muted);font-size:16px;line-height:1.8;margin-bottom:36px;" class="reveal">
+        En AutoMake diseñamos, construimos e implementamos sistemas de automatización a medida que transforman la forma en que opera tu negocio.
+      </p>
       <div class="solution-features">
         <div class="feature-row reveal">
           <div class="feature-icon">⚡</div>
@@ -677,167 +616,160 @@
       </div>
     </div>
     <div class="solution-visual">
-      <div class="solution-ring"></div>
-      <div class="solution-ring"></div>
-      <div class="solution-ring"></div>
-      <div class="solution-orbits">
+      <div class="sol-ring"></div>
+      <div class="sol-ring"></div>
+      <div class="sol-ring"></div>
+      <div class="sol-orbits">
         <div class="orbit-dot"></div>
         <div class="orbit-dot"></div>
         <div class="orbit-dot"></div>
       </div>
-      <div class="solution-core">
-        <div class="solution-core-num">∞</div>
-        <div class="solution-core-label">POTENCIAL</div>
+      <div class="sol-core">
+        <div class="sol-core-num">∞</div>
+        <div class="sol-core-label">POTENCIAL</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item reveal">
-    <div class="stat-num">+87%</div>
-    <div class="stat-label">Reducción de tareas manuales</div>
-  </div>
-  <div class="stat-item reveal reveal-delay-1">
-    <div class="stat-num">3×</div>
-    <div class="stat-label">Velocidad de respuesta al cliente</div>
-  </div>
-  <div class="stat-item reveal reveal-delay-2">
-    <div class="stat-num">100+</div>
-    <div class="stat-label">Proyectos implementados</div>
-  </div>
-  <div class="stat-item reveal reveal-delay-3">
-    <div class="stat-num">24/7</div>
-    <div class="stat-label">Operación sin descanso</div>
-  </div>
-</div>
-
-<!-- PROCESS -->
+<!-- ═══ PROCESO ═══ -->
 <section class="process-section" id="proceso">
   <div class="section-label">Cómo Trabajamos</div>
   <h2 class="section-title reveal">EL PROCESO<br><span class="outline">AUTOMAKE</span></h2>
   <div class="process-steps">
     <div class="process-step reveal">
       <div class="step-num">1</div>
-      <h3 class="step-title">Diagnóstico Profundo</h3>
-      <p class="step-text">Analizamos tu negocio, identificamos los cuellos de botella y mapeamos qué procesos generan más valor al automatizarse.</p>
+      <h3 class="step-title">Diagnóstico</h3>
+      <p class="step-text">Analizamos tu operación, identificamos los cuellos de botella y mapeamos qué procesos generan más valor al automatizarse.</p>
     </div>
     <div class="process-step reveal reveal-delay-1">
       <div class="step-num">2</div>
       <h3 class="step-title">Diseño a Medida</h3>
-      <p class="step-text">Arquitectura personalizada. No vendemos soluciones genéricas. Cada automatización está diseñada para tu operación específica.</p>
+      <p class="step-text">No vendemos soluciones genéricas. Cada automatización está diseñada específicamente para tu operación y objetivos.</p>
     </div>
     <div class="process-step reveal reveal-delay-2">
       <div class="step-num">3</div>
-      <h3 class="step-title">Implementación Ágil</h3>
-      <p class="step-text">Construimos rápido y en fases. Empiezas a ver resultados en semanas, no en meses.</p>
+      <h3 class="step-title">Implementación</h3>
+      <p class="step-text">Construimos y desplegamos en fases. Empiezas a ver resultados reales en semanas, no en meses.</p>
     </div>
     <div class="process-step reveal reveal-delay-3">
       <div class="step-num">4</div>
-      <h3 class="step-title">Optimización Continua</h3>
-      <p class="step-text">Medimos, aprendemos y mejoramos. Tus automatizaciones evolucionan con tu negocio.</p>
+      <h3 class="step-title">Optimización</h3>
+      <p class="step-text">Medimos, aprendemos y mejoramos. Tus automatizaciones evolucionan junto con tu negocio.</p>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="section-label">Resultados Reales</div>
-  <h2 class="section-title reveal">LO QUE DICEN<br><span class="outline">NUESTROS</span> CLIENTES</h2>
-  <div class="testimonials-grid">
-    <div class="testimonial-card reveal">
-      <div class="testimonial-quote">"</div>
-      <p class="testimonial-text">AutoMake transformó por completo nuestra operación. Lo que antes tomaba 3 días ahora sucede en 20 minutos. El ROI fue visible en el primer mes.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">CR</div>
-        <div>
-          <div class="author-name">Carlos Rodríguez</div>
-          <div class="author-role">CEO, Distribuidora Norte</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card reveal reveal-delay-1">
-      <div class="testimonial-quote">"</div>
-      <p class="testimonial-text">Nuestro equipo de ventas ahora se enfoca en cerrar negocios, no en llenar formularios. Los flujos automáticos hacen el trabajo sucio perfectamente.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">LM</div>
-        <div>
-          <div class="author-name">Laura Martínez</div>
-          <div class="author-role">Directora Comercial, TechRetail</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card reveal reveal-delay-2">
-      <div class="testimonial-quote">"</div>
-      <p class="testimonial-text">Escalamos el 200% sin contratar una sola persona nueva. La automatización que implementaron fue la decisión más inteligente que tomamos.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">JP</div>
-        <div>
-          <div class="author-name">Julián Pérez</div>
-          <div class="author-role">Fundador, LogisFast</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT BUBBLE -->
+<!-- ═══ BURBUJA CONTACTO (mitad de página) ═══ -->
 <section class="contact-section">
   <div class="section-label">Contacto</div>
   <h2 class="section-title reveal">¿LISTO PARA DAR<br>EL <span class="outline">SIGUIENTE</span> PASO?</h2>
-  <p class="reveal" style="color: var(--text-muted); font-size: 16px; max-width: 480px; text-align: center; line-height: 1.8;">Agenda una sesión gratuita de diagnóstico y descubramos juntos cómo la automatización puede transformar tu negocio.</p>
+  <p class="reveal" style="color:var(--text-muted);font-size:16px;max-width:460px;text-align:center;line-height:1.8;">
+    Cuéntanos tu desafío. Sin compromisos, sin tecnicismos innecesarios. Solo una conversación que puede cambiar cómo opera tu negocio.
+  </p>
 
+  <!-- BOTÓN 3: Burbuja central -->
   <div class="contact-bubble-wrapper reveal">
-    <a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener" style="text-decoration: none; color: inherit; display: block;">
-      <div class="contact-bubble">
-        <div class="bubble-tag">Disponible ahora</div>
-        <h3 class="bubble-title">ESCRÍBENOS HOY</h3>
-        <p class="bubble-text">Respuesta garantizada en menos de 24 horas. Sin compromisos. Solo una conversación que puede cambiar tu negocio.</p>
-        <div class="bubble-email">
-          <span>✉</span>
-          <span>automakeventas@gmail.com</span>
-        </div>
+    <a class="contact-bubble" onclick="openMail()">
+      <div class="bubble-tag">Escríbenos ahora</div>
+      <h3 class="bubble-title">HABLEMOS DE TU NEGOCIO</h3>
+      <p class="bubble-text">Respondemos en menos de 24 horas. Cuéntanos en qué parte de tu operación quieres ganar tiempo y claridad.</p>
+      <div class="bubble-email-label">
+        <span>✉</span>
+        <span>automakeventas@gmail.com</span>
       </div>
     </a>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
-  <div class="footer-main">
-    <div class="footer-brand">
-      <div class="footer-logo">AUTO<span>MAKE</span></div>
-      <p class="footer-desc">Somos una agencia especializada en automatizaciones inteligentes para negocios que quieren crecer sin límites operativos.</p>
-      <a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener" class="footer-contact-link">
-        <span class="icon">✉</span>
-        <span>automakeventas@gmail.com</span>
-      </a>
-    </div>
-    <div>
-      <div class="footer-col-title">Servicios</div>
-      <ul class="footer-links">
-        <li><a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener">Automatización de Procesos</a></li>
-        <li><a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener">Integración de Sistemas</a></li>
-        <li><a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener">IA & Chatbots</a></li>
-        <li><a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener">CRM Automático</a></li>
-        <li><a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener">Email Marketing</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Empresa</div>
-      <ul class="footer-links">
-        <li><a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener">Nosotros</a></li>
-        <li><a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener">Casos de Éxito</a></li>
-        <li><a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener">Blog</a></li>
-        <li><a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener">Contacto</a></li>
-      </ul>
+  <div class="footer-brand">
+    <div class="footer-logo">AUTO<span>MAKE</span></div>
+    <p class="footer-desc">Agencia especializada en automatizaciones inteligentes para negocios que quieren crecer sin límites operativos.</p>
+    <!-- BOTÓN 4 ELIMINADO — el footer solo muestra info, el correo como texto -->
+    <div class="footer-email-link" onclick="openMail()" style="cursor:none;">
+      <span class="icon">✉</span>
+      <span>automakeventas@gmail.com</span>
     </div>
   </div>
+
+  <div class="footer-right">
+    <div class="footer-col-title">Servicios</div>
+    <ul class="footer-services">
+      <li>Automatización de Procesos</li>
+      <li>Integración de Sistemas</li>
+      <li>IA & Chatbots</li>
+      <li>CRM Automático</li>
+      <li>Email Marketing Automatizado</li>
+      <li>Reportes en Tiempo Real</li>
+    </ul>
+  </div>
+
   <div class="footer-bottom">
     <span class="footer-bottom-text">© 2025 AutoMake. Todos los derechos reservados.</span>
-    <a href="https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com" target="_blank" rel="noopener" class="footer-bottom-cta">automakeventas@gmail.com →</a>
+    <span class="footer-bottom-mail">automakeventas@gmail.com</span>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-st
+<script>
+  /* ── Abrir email en cualquier cliente / Gmail ── */
+  function openMail() {
+    /* Intenta primero mailto (Outlook, Apple Mail, etc.)
+       Si el usuario no tiene cliente configurado, abre Gmail web */
+    const mailto = 'mailto:automakeventas@gmail.com?subject=Quiero%20automatizar%20mi%20negocio';
+    const gmail  = 'https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com&su=Quiero%20automatizar%20mi%20negocio';
+
+    /* Detecta si hay un cliente de correo nativo */
+    const a = document.createElement('a');
+    a.href = mailto;
+    let opened = false;
+
+    /* Usamos un iframe oculto para disparar mailto sin navegar */
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    iframe.src = mailto;
+
+    /* Esperamos un momento: si el navegador redirigió a un cliente, bien.
+       Si no (permanece en la misma página), abrimos Gmail como respaldo. */
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+      if (document.hasFocus()) {          /* la ventana sigue activa → no se abrió cliente externo */
+        window.open(gmail, '_blank');
+      }
+    }, 600);
+  }
+
+  /* ── Cursor personalizado ── */
+  const cursor = document.getElementById('cursor');
+  const ring   = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+  function animCursor() {
+    cursor.style.left = mx + 'px';
+    cursor.style.top  = my + 'px';
+    rx += (mx - rx) * 0.13;
+    ry += (my - ry) * 0.13;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+
+  /* ── Scroll reveal ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => obs.observe(el));
+
+  /* Hero reveal inmediato */
+  document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 180 + i * 140);
+  });
+</script>
+</body>
+</html>
