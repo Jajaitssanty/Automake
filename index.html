@@ -17,10 +17,10 @@
     --gray-mid: #1E1E1E;
     --text-muted: #777;
   }
- 
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
- 
+
   body {
     background: var(--black);
     color: var(--white);
@@ -29,7 +29,7 @@
     overflow-x: hidden;
     cursor: none;
   }
- 
+
   /* CURSOR */
   .cursor {
     position: fixed; width: 10px; height: 10px;
@@ -44,7 +44,7 @@
     pointer-events: none; z-index: 9998;
     transform: translate(-50%, -50%);
   }
- 
+
   /* NOISE */
   body::before {
     content: '';
@@ -52,7 +52,7 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
     pointer-events: none; z-index: 1; opacity: 0.5;
   }
- 
+
   /* ───── NAV ───── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -67,7 +67,7 @@
     font-size: 26px; letter-spacing: 0.18em; color: var(--white);
   }
   .logo span { color: var(--red); }
- 
+
   /* BOTÓN 1 — NAV */
   .btn-nav {
     background: transparent;
@@ -81,7 +81,7 @@
     cursor: none;
   }
   .btn-nav:hover { background: var(--red); border-color: var(--red); }
- 
+
   /* ───── HERO ───── */
   .hero {
     min-height: 100vh;
@@ -95,7 +95,7 @@
   .hero-line.v1 { left: 33%; top: 0; bottom: 0; width: 1px; }
   .hero-line.v2 { left: 66%; top: 0; bottom: 0; width: 1px; }
   .hero-line.h1 { top: 50%; left: 0; right: 0; height: 1px; }
- 
+
   .hero-eyebrow {
     font-family: 'Courier Prime', monospace;
     font-size: 11px; letter-spacing: 0.3em; color: var(--red);
@@ -105,7 +105,7 @@
   .hero-eyebrow::before {
     content: ''; display: block; width: 36px; height: 1px; background: var(--red);
   }
- 
+
   .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(68px, 10vw, 155px);
@@ -116,13 +116,13 @@
     -webkit-text-stroke: 1.5px var(--white); color: transparent;
   }
   .hero h1 .red { color: var(--red); }
- 
+
   .hero-sub {
     margin-top: 40px;
     font-size: 17px; font-weight: 300; line-height: 1.75;
     color: var(--text-muted); max-width: 460px;
   }
- 
+
   /* BOTÓN 2 — HERO (el botón principal del CTA) */
   .hero-cta { margin-top: 52px; }
   .btn-hero {
@@ -144,7 +144,7 @@
   .btn-hero:hover::after { transform: translateX(0); }
   .btn-hero span { position: relative; z-index: 1; }
   .btn-hero:hover { box-shadow: 0 0 40px var(--red-glow); }
- 
+
   .hero-scroll {
     margin-top: 60px;
     font-family: 'Courier Prime', monospace;
@@ -157,7 +157,7 @@
     animation: scroll-line 2s ease-in-out infinite;
   }
   @keyframes scroll-line { 0%,100%{opacity:0.3} 50%{opacity:1} }
- 
+
   /* ── Panel de flujo de automatización (lado derecho) ── */
   .hero-panel {
     position: absolute;
@@ -190,7 +190,7 @@
   .panel-dot.r { background: var(--red); }
   .panel-dot.w { background: rgba(255,255,255,0.25); }
   .panel-dot.g { background: rgba(255,255,255,0.12); }
- 
+
   .task-row {
     display: flex; align-items: center; gap: 14px;
     padding: 14px 16px;
@@ -241,7 +241,7 @@
     font-size: 10px; letter-spacing: 0.1em; color: var(--text-muted);
     text-transform: uppercase; text-align: right; max-width: 130px; line-height: 1.4;
   }
- 
+
   /* Rotating badge */
   .hero-badge {
     position: absolute; right: 60px; bottom: 50px;
@@ -260,7 +260,7 @@
     font-size: 12px; letter-spacing: 0.1em; color: var(--red);
     text-align: center; line-height: 1.4; pointer-events: none;
   }
- 
+
   /* ───── MARQUEE ───── */
   .marquee-bar {
     border-top: 1px solid rgba(255,255,255,0.06);
@@ -280,7 +280,7 @@
   }
   .marquee-item::after { content: '◆'; color: var(--red); font-size: 7px; }
   @keyframes marquee { to { transform: translateX(-50%); } }
- 
+
   /* ───── SECTION COMMON ───── */
   .section { padding: 110px 60px; }
   .section-label {
@@ -294,7 +294,7 @@
     line-height: 1; letter-spacing: 0.02em; margin-bottom: 56px;
   }
   .section-title .outline { -webkit-text-stroke: 1px var(--white); color: transparent; }
- 
+
   /* ───── PROBLEMAS ───── */
   .problems-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
@@ -325,7 +325,7 @@
   }
   .problem-title { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
   .problem-text { font-size: 14px; line-height: 1.75; color: var(--text-muted); }
- 
+
   /* ───── SOLUCIÓN ───── */
   .solution-section {
     padding: 110px 60px; background: var(--gray-dark); position: relative; overflow: hidden;
@@ -353,7 +353,7 @@
   }
   .feature-info h4 { font-size: 15px; font-weight: 600; margin-bottom: 5px; }
   .feature-info p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
- 
+
   /* Visual orbital */
   .solution-visual {
     position: relative; aspect-ratio: 1;
@@ -388,7 +388,7 @@
   }
   .sol-core-num { font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; }
   .sol-core-label { font-size: 10px; letter-spacing: 0.18em; opacity: 0.8; }
- 
+
   /* ───── PROCESO ───── */
   .process-section { padding: 110px 60px; background: var(--black); }
   .process-steps { display: flex; position: relative; margin-top: 56px; }
@@ -408,7 +408,7 @@
   .process-step:hover .step-num { background: var(--red); color: var(--white); }
   .step-title { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
   .step-text { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
- 
+
   /* ───── BURBUJA CONTACTO (centro de página) ───── */
   .contact-section {
     padding: 110px 60px;
@@ -423,7 +423,7 @@
     background: radial-gradient(circle, rgba(232,0,26,0.1) 0%, transparent 65%);
     pointer-events: none;
   }
- 
+
   /* BOTÓN 3 — BURBUJA CENTRAL */
   .contact-bubble-wrapper { position: relative; z-index: 2; margin-top: 56px; }
   .contact-bubble {
@@ -476,7 +476,7 @@
   .contact-bubble:hover .bubble-email-label {
     box-shadow: 0 0 30px var(--red-glow);
   }
- 
+
   /* ───── FOOTER ───── */
   footer {
     background: var(--black);
@@ -493,7 +493,7 @@
     font-size: 13px; color: var(--text-muted); line-height: 1.8;
     max-width: 300px; margin-bottom: 28px;
   }
- 
+
   /* BOTÓN 4 — FOOTER (el pie de página que pediste) */
   .footer-email-link {
     display: inline-flex; align-items: center; gap: 10px;
@@ -504,7 +504,7 @@
   }
   .footer-email-link:hover { background: var(--red); border-color: var(--red); }
   .footer-email-link .icon { font-size: 15px; }
- 
+
   .footer-right { }
   .footer-col-title {
     font-family: 'Courier Prime', monospace;
@@ -519,7 +519,7 @@
     display: flex; align-items: center; gap: 8px;
   }
   .footer-services li::before { content: '—'; color: var(--red); font-size: 12px; }
- 
+
   .footer-bottom {
     grid-column: 1 / -1;
     border-top: 1px solid rgba(255,255,255,0.05);
@@ -528,7 +528,7 @@
   }
   .footer-bottom-text { font-size: 12px; color: var(--text-muted); }
   .footer-bottom-mail { font-size: 12px; color: var(--text-muted); letter-spacing: 0.06em; }
- 
+
   /* ───── REVEAL ───── */
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -536,7 +536,7 @@
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
- 
+
   /* ───── RESPONSIVE ───── */
   @media (max-width: 1300px) and (min-width: 1025px) {
     .hero-panel { width: 340px; right: 40px; }
@@ -562,35 +562,35 @@
 </style>
 </head>
 <body>
- 
+
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
- 
+
 <!-- ═══ NAV ═══ -->
 <nav>
   <div class="logo">AUTO<span>MAKE</span></div>
   <!-- BOTÓN 1: Nav -->
   <a class="btn-nav" onclick="openMail()">Contactar ahora →</a>
 </nav>
- 
+
 <!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-line v1"></div>
   <div class="hero-line v2"></div>
   <div class="hero-line h1"></div>
- 
+
   <div class="hero-eyebrow">Agencia de Automatizaciones</div>
- 
+
   <h1 class="reveal">
     TU NEGOCIO<br>
     <span class="outline">SIN</span><br>
     <span class="red">LÍMITES</span>
   </h1>
- 
+
   <p class="hero-sub reveal reveal-delay-1">
-    Diseñamos sistemas de automatización que eliminan el trabajo repetitivo y multiplican tus resultados. Tu equipo enfocado en lo que realmente importa.
+    Diseñamos sistemas de automatización que eliminan el trabajo repetitivo, te ahorran dinero y multiplican tus resultados. Tu equipo enfocado en lo que realmente importa.
   </p>
- 
+
   <!-- BOTÓN 2: Hero CTA -->
   <div class="hero-cta reveal reveal-delay-2">
     <a class="btn-hero" onclick="openMail()">
@@ -598,9 +598,9 @@
       <span>Quiero automatizar mi negocio</span>
     </a>
   </div>
- 
+
   <div class="hero-scroll reveal reveal-delay-3">Scroll para explorar</div>
- 
+
   <!-- Panel de flujo de automatización -->
   <div class="hero-panel">
     <div class="panel-card">
@@ -612,7 +612,7 @@
           <span class="panel-dot g"></span>
         </div>
       </div>
- 
+
       <div class="task-row">
         <div class="task-check">✓</div>
         <div class="task-info">
@@ -641,14 +641,14 @@
           <div class="task-status">Automatizado con IA</div>
         </div>
       </div>
- 
+
       <div class="panel-footer">
         <div class="panel-metric-num">24<span>/7</span></div>
         <div class="panel-metric-label">Operando sin descanso</div>
       </div>
     </div>
   </div>
- 
+
   <div class="hero-badge">
     <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
       <defs><path id="cp" d="M 60,60 m -44,0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0"/></defs>
@@ -659,7 +659,7 @@
   </div>
   <div class="hero-badge-center">AUTO<br>MAKE</div>
 </section>
- 
+
 <!-- ═══ MARQUEE ═══ -->
 <div class="marquee-bar">
   <div class="marquee-track">
@@ -679,7 +679,7 @@
     <div class="marquee-item">Reportes Automáticos</div>
   </div>
 </div>
- 
+
 <!-- ═══ PROBLEMAS ═══ -->
 <section class="section">
   <div class="section-label">El Problema</div>
@@ -717,7 +717,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ SOLUCIÓN ═══ -->
 <section class="solution-section">
   <div class="solution-layout">
@@ -774,7 +774,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ PROCESO ═══ -->
 <section class="process-section" id="proceso">
   <div class="section-label">Cómo Trabajamos</div>
@@ -802,7 +802,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ═══ BURBUJA CONTACTO (mitad de página) ═══ -->
 <section class="contact-section">
   <div class="section-label">Contacto</div>
@@ -810,7 +810,7 @@
   <p class="reveal" style="color:var(--text-muted);font-size:16px;max-width:460px;text-align:center;line-height:1.8;">
     Cuéntanos tu desafío. Sin compromisos, sin tecnicismos innecesarios. Solo una conversación que puede cambiar cómo opera tu negocio.
   </p>
- 
+
   <!-- BOTÓN 3: Burbuja central -->
   <div class="contact-bubble-wrapper reveal">
     <a class="contact-bubble" onclick="openMail()">
@@ -824,7 +824,7 @@
     </a>
   </div>
 </section>
- 
+
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-brand">
@@ -836,7 +836,7 @@
       <span>automakeventas@gmail.com</span>
     </div>
   </div>
- 
+
   <div class="footer-right">
     <div class="footer-col-title">Servicios</div>
     <ul class="footer-services">
@@ -848,49 +848,67 @@
       <li>Reportes en Tiempo Real</li>
     </ul>
   </div>
- 
+
   <div class="footer-bottom">
     <span class="footer-bottom-text">© 2025 AutoMake. Todos los derechos reservados.</span>
     <span class="footer-bottom-mail">automakeventas@gmail.com</span>
   </div>
 </footer>
- 
+
 <script>
   /* ── Abrir email en cualquier cliente / Gmail ── */
   function openMail() {
     /* Intenta primero mailto (Outlook, Apple Mail, etc.)
        Si el usuario no tiene cliente configurado, abre Gmail web */
-    const mailto = 'mailto:automakeventas@gmail.com?subject=Quiero%20automatizar%20mi%20negocio';
-    const gmail  = 'https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com&su=Quiero%20automatizar%20mi%20negocio';
- 
-    /* Detecta si hay un cliente de correo nativo */
-    const a = document.createElement('a');
-    a.href = mailto;
-    let opened = false;
- 
-    /* Usamos un iframe oculto para disparar mailto sin navegar */
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-    iframe.src = mailto;
- 
-    /* Esperamos un momento: si el navegador redirigió a un cliente, bien.
-       Si no (permanece en la misma página), abrimos Gmail como respaldo. */
-    setTimeout(() => {
-      document.body.removeChild(iframe);
-      if (document.hasFocus()) {          /* la ventana sigue activa → no se abrió cliente externo */
-        window.open(gmail, '_blank');
-      }
-    }, 600);
+
+    const asunto = 'Quiero automatizar mi negocio con AutoMake';
+
+    const cuerpo =
+'Hola equipo de AutoMake,\n\n' +
+'Vi su página web y me interesa conocer cómo la automatización con inteligencia artificial podría ayudar a mi negocio.\n\n' +
+'Actualmente dedicamos mucho tiempo a tareas repetitivas y me gustaría entender qué procesos podríamos automatizar para ganar tiempo y ahorrar dinero.\n\n' +
+'¿Podríamos agendar una conversación para un diagnóstico inicial?\n\n' +
+'Mis datos:\n' +
+'• Nombre:\n' +
+'• Empresa:\n' +
+'• Teléfono / WhatsApp:\n\n' +
+'Quedo atento a su respuesta.\n\n' +
+'Saludos.';
+
+    const mailto = 'mailto:automakeventas@gmail.com'
+                 + '?subject=' + encodeURIComponent(asunto)
+                 + '&body='    + encodeURIComponent(cuerpo);
+
+    const gmail  = 'https://mail.google.com/mail/?view=cm&to=automakeventas@gmail.com'
+                 + '&su='   + encodeURIComponent(asunto)
+                 + '&body=' + encodeURIComponent(cuerpo);
+
+    const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (esMovil) {
+      /* En celular el correo nativo (Gmail, Outlook, Mail, Yahoo...) abre al instante */
+      window.location.href = mailto;
+    } else {
+      /* En computador intentamos el correo predeterminado del usuario, sea cual sea.
+         Si en ~700ms la página sigue activa (no había cliente configurado),
+         abrimos Gmail web como respaldo universal. */
+      const inicio = Date.now();
+      window.location.href = mailto;
+      setTimeout(() => {
+        if (document.hasFocus() && Date.now() - inicio < 1500) {
+          window.open(gmail, '_blank');
+        }
+      }, 700);
+    }
   }
- 
+
   /* ── Cursor personalizado ── */
   const cursor = document.getElementById('cursor');
   const ring   = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
- 
+
   document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
- 
+
   function animCursor() {
     cursor.style.left = mx + 'px';
     cursor.style.top  = my + 'px';
@@ -901,14 +919,14 @@
     requestAnimationFrame(animCursor);
   }
   animCursor();
- 
+
   /* ── Scroll reveal ── */
   const reveals = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(el => obs.observe(el));
- 
+
   /* Hero reveal inmediato */
   document.querySelectorAll('.hero .reveal').forEach((el, i) => {
     setTimeout(() => el.classList.add('visible'), 180 + i * 140);
