@@ -27,22 +27,6 @@
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
-    cursor: none;
-  }
-
-  /* CURSOR */
-  .cursor {
-    position: fixed; width: 10px; height: 10px;
-    background: var(--red); border-radius: 50%;
-    pointer-events: none; z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s;
-  }
-  .cursor-ring {
-    position: fixed; width: 34px; height: 34px;
-    border: 1px solid rgba(232,0,26,0.45); border-radius: 50%;
-    pointer-events: none; z-index: 9998;
-    transform: translate(-50%, -50%);
   }
 
   /* NOISE */
@@ -78,7 +62,7 @@
     font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
     color: var(--white); text-decoration: none;
     transition: background 0.3s, border-color 0.3s;
-    cursor: none;
+   
   }
   .btn-nav:hover { background: var(--red); border-color: var(--red); }
 
@@ -131,7 +115,7 @@
     padding: 20px 44px; text-decoration: none;
     font-family: 'DM Sans', sans-serif;
     font-size: 14px; font-weight: 600; letter-spacing: 0.09em;
-    text-transform: uppercase; cursor: none;
+    text-transform: uppercase;
     position: relative; overflow: hidden;
     clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
     transition: box-shadow 0.3s;
@@ -434,7 +418,7 @@
     max-width: 620px; width: 100%;
     position: relative; overflow: hidden;
     transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s;
-    display: block; text-decoration: none; color: inherit; cursor: none;
+    display: block; text-decoration: none; color: inherit;
   }
   .contact-bubble:hover {
     border-color: var(--red);
@@ -500,7 +484,7 @@
     background: rgba(232,0,26,0.08); border: 1px solid rgba(232,0,26,0.22);
     padding: 14px 22px; text-decoration: none; color: var(--white);
     font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
-    transition: background 0.3s, border-color 0.3s; cursor: none;
+    transition: background 0.3s, border-color 0.3s;
   }
   .footer-email-link:hover { background: var(--red); border-color: var(--red); }
   .footer-email-link .icon { font-size: 15px; }
@@ -528,6 +512,209 @@
   }
   .footer-bottom-text { font-size: 12px; color: var(--text-muted); }
   .footer-bottom-mail { font-size: 12px; color: var(--text-muted); letter-spacing: 0.06em; }
+
+  /* ───── PRUEBA SOCIAL / HERRAMIENTAS ───── */
+  .tools-section {
+    padding: 56px 60px;
+    background: var(--black);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+  }
+  .tools-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px; letter-spacing: 0.24em; color: var(--text-muted);
+    text-transform: uppercase; margin-bottom: 32px;
+  }
+  .tools-row {
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap; gap: 18px;
+  }
+  .tool-chip {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 12px 22px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 100px;
+    background: rgba(255,255,255,0.02);
+    font-size: 14px; font-weight: 500; color: var(--white);
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .tool-chip:hover { border-color: rgba(232,0,26,0.4); background: rgba(232,0,26,0.05); }
+  .tool-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
+
+  /* ───── FUNDADOR ───── */
+  .founder-section {
+    padding: 110px 60px; background: var(--black);
+  }
+  .founder-layout {
+    display: grid; grid-template-columns: 280px 1fr; gap: 60px; align-items: center;
+    max-width: 1000px;
+  }
+  .founder-photo {
+    aspect-ratio: 1; border-radius: 20px;
+    background: linear-gradient(150deg, var(--gray-mid) 0%, var(--black) 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .founder-photo::before {
+    content: '';
+    position: absolute; top: -50%; right: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, var(--red-glow) 0%, transparent 60%);
+    opacity: 0.5;
+  }
+  .founder-initials {
+    font-family: 'Bebas Neue', sans-serif; font-size: 80px;
+    color: var(--red); position: relative; z-index: 1; letter-spacing: 0.05em;
+  }
+  .founder-photo-note {
+    position: absolute; bottom: 16px; left: 0; right: 0;
+    text-align: center; font-size: 10px; color: var(--text-muted);
+    font-family: 'Courier Prime', monospace; letter-spacing: 0.1em;
+  }
+  .founder-quote {
+    font-size: 22px; font-weight: 300; line-height: 1.6;
+    margin-bottom: 28px; color: var(--white);
+  }
+  .founder-quote .hl { color: var(--red); font-weight: 500; }
+  .founder-name { font-size: 16px; font-weight: 600; }
+  .founder-role { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+  /* ───── DIAGNÓSTICO GRATIS (banner) ───── */
+  .diagnostic-banner {
+    margin: 0 60px; padding: 48px 56px;
+    background: linear-gradient(120deg, var(--red) 0%, var(--red-dark) 100%);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 40px; flex-wrap: wrap;
+    position: relative; overflow: hidden;
+  }
+  .diagnostic-banner::before {
+    content: ''; position: absolute; top: -60%; right: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 65%);
+  }
+  .diagnostic-info { position: relative; z-index: 1; max-width: 560px; }
+  .diagnostic-tag {
+    font-family: 'Courier Prime', monospace; font-size: 11px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    opacity: 0.85; margin-bottom: 12px;
+  }
+  .diagnostic-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 40px;
+    line-height: 1; margin-bottom: 12px; letter-spacing: 0.02em;
+  }
+  .diagnostic-text { font-size: 15px; line-height: 1.6; opacity: 0.92; }
+  .diagnostic-btn {
+    position: relative; z-index: 1;
+    background: var(--black); color: var(--white);
+    padding: 20px 40px; text-decoration: none;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: transform 0.3s, box-shadow 0.3s; white-space: nowrap;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  }
+  .diagnostic-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,0.3); }
+
+  /* ───── PRECIOS ───── */
+  .pricing-section { padding: 110px 60px; background: var(--gray-dark); }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px;
+  }
+  .price-card {
+    background: var(--black);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 40px 34px;
+    display: flex; flex-direction: column;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+  }
+  .price-card:hover { transform: translateY(-6px); border-color: rgba(232,0,26,0.3); }
+  .price-card.featured {
+    border-color: var(--red);
+    box-shadow: 0 0 50px rgba(232,0,26,0.12);
+  }
+  .price-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--red); color: var(--white);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 6px 18px; border-radius: 100px; white-space: nowrap;
+    font-family: 'Courier Prime', monospace;
+  }
+  .price-name {
+    font-family: 'Bebas Neue', sans-serif; font-size: 26px;
+    letter-spacing: 0.05em; margin-bottom: 8px;
+  }
+  .price-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; min-height: 44px; }
+  .price-amount {
+    font-family: 'Bebas Neue', sans-serif; font-size: 52px;
+    color: var(--red); line-height: 1; margin-bottom: 4px;
+  }
+  .price-amount .currency { font-size: 24px; vertical-align: super; }
+  .price-period { font-size: 12px; color: var(--text-muted); margin-bottom: 28px; letter-spacing: 0.05em; }
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; flex: 1; }
+  .price-features li { font-size: 14px; color: var(--white); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .price-features li::before { content: '✓'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+  .price-btn {
+    text-align: center; padding: 15px; text-decoration: none;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    border: 1px solid var(--red); color: var(--white);
+    transition: background 0.3s;
+  }
+  .price-btn:hover { background: var(--red); }
+  .price-btn.solid { background: var(--red); }
+  .price-btn.solid:hover { background: var(--red-dark); }
+  .pricing-note {
+    text-align: center; margin-top: 36px; font-size: 13px; color: var(--text-muted);
+  }
+
+  /* ───── FAQ ───── */
+  .faq-section { padding: 110px 60px; background: var(--black); }
+  .faq-list { max-width: 820px; margin-top: 48px; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none;
+    padding: 26px 0; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px; font-weight: 500; color: var(--white);
+    transition: color 0.3s;
+  }
+  .faq-q:hover { color: var(--red); }
+  .faq-icon {
+    flex-shrink: 0; width: 28px; height: 28px;
+    border: 1px solid rgba(232,0,26,0.5); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--red); font-size: 18px; transition: transform 0.3s, background 0.3s;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--red); color: var(--white); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding-bottom: 26px; }
+  .faq-a p { font-size: 15px; line-height: 1.75; color: var(--text-muted); }
+
+  /* ───── WHATSAPP FLOTANTE ───── */
+  .wa-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #25D366; border: none;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    transition: transform 0.3s;
+    animation: wa-pulse 2.5s infinite;
+  }
+  .wa-float:hover { transform: scale(1.1); }
+  .wa-float svg { width: 32px; height: 32px; }
+  @keyframes wa-pulse {
+    0% { box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 0 0 rgba(37,211,102,0.5); }
+    70% { box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 0 16px rgba(37,211,102,0); }
+    100% { box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 0 0 rgba(37,211,102,0); }
+  }
 
   /* ───── REVEAL ───── */
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
@@ -558,19 +745,26 @@
     .contact-bubble { padding: 40px 28px; }
     .hero-badge, .hero-badge-center { display: none; }
     .hero-panel { display: none; }
+
+    .tools-section, .founder-section, .pricing-section, .faq-section { padding: 70px 28px; }
+    .founder-layout { grid-template-columns: 1fr; gap: 32px; max-width: 420px; }
+    .founder-photo { max-width: 220px; }
+    .diagnostic-banner { margin: 0 28px; padding: 36px 28px; flex-direction: column; align-items: flex-start; text-align: left; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .price-card.featured { order: -1; }
+    .wa-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
+    .wa-float svg { width: 28px; height: 28px; }
   }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
 <!-- ═══ NAV ═══ -->
 <nav>
   <div class="logo">AUTO<span>MAKE</span></div>
   <!-- BOTÓN 1: Nav -->
-  <a class="btn-nav" onclick="openMail()">Contactar ahora →</a>
+  <a class="btn-nav" onclick="openWhatsApp()">Contactar ahora →</a>
 </nav>
 
 <!-- ═══ HERO ═══ -->
@@ -593,8 +787,8 @@
 
   <!-- BOTÓN 2: Hero CTA -->
   <div class="hero-cta reveal reveal-delay-2">
-    <a class="btn-hero" onclick="openMail()">
-      <span>✉</span>
+    <a class="btn-hero" onclick="openWhatsApp()">
+      <span>💬</span>
       <span>Quiero automatizar mi negocio</span>
     </a>
   </div>
@@ -679,6 +873,20 @@
     <div class="marquee-item">Reportes Automáticos</div>
   </div>
 </div>
+
+<!-- ═══ HERRAMIENTAS / PRUEBA SOCIAL ═══ -->
+<section class="tools-section">
+  <div class="tools-label reveal">Construimos con las mejores tecnologías del mercado</div>
+  <div class="tools-row reveal reveal-delay-1">
+    <div class="tool-chip"><span class="dot"></span>OpenAI</div>
+    <div class="tool-chip"><span class="dot"></span>Make</div>
+    <div class="tool-chip"><span class="dot"></span>n8n</div>
+    <div class="tool-chip"><span class="dot"></span>Zapier</div>
+    <div class="tool-chip"><span class="dot"></span>Airtable</div>
+    <div class="tool-chip"><span class="dot"></span>Google Workspace</div>
+    <div class="tool-chip"><span class="dot"></span>Notion</div>
+  </div>
+</section>
 
 <!-- ═══ PROBLEMAS ═══ -->
 <section class="section">
@@ -803,6 +1011,97 @@
   </div>
 </section>
 
+<!-- ═══ FUNDADOR ═══ -->
+<section class="founder-section">
+  <div class="section-label">Quién está detrás</div>
+  <h2 class="section-title reveal">PERSONAS,<br>NO UN <span class="outline">LOGO</span></h2>
+  <div class="founder-layout">
+    <div class="founder-photo reveal">
+      <span class="founder-initials">AM</span>
+      <span class="founder-photo-note">[ TU FOTO AQUÍ ]</span>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <p class="founder-quote">
+        Soy estudiante de <span class="hl">Ingeniería Informática</span> y fundé AutoMake con una idea clara: las herramientas de inteligencia artificial más potentes ya existen, pero la mayoría de negocios no sabe cómo aprovecharlas. <span class="hl">Yo me encargo de eso por ti.</span>
+      </p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.75;margin-bottom:24px;">
+        Trabajar directamente conmigo significa trato cercano, soluciones al día con lo último en IA y precios justos, sin los costos inflados de una agencia tradicional. Cada proyecto lo construyo yo, pensado para tu negocio.
+      </p>
+      <div class="founder-name">Fundador de AutoMake</div>
+      <div class="founder-role">Estudiante de Ingeniería Informática · Especialista en automatización con IA</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIAGNÓSTICO GRATIS ═══ -->
+<div class="diagnostic-banner reveal">
+  <div class="diagnostic-info">
+    <div class="diagnostic-tag">100% gratuito · Sin compromiso</div>
+    <div class="diagnostic-title">DIAGNÓSTICO GRATUITO DE AUTOMATIZACIÓN</div>
+    <div class="diagnostic-text">Analizamos tu negocio y te decimos exactamente qué procesos puedes automatizar y cuánto tiempo y dinero podrías ahorrar. Sin costo y sin obligación de contratar.</div>
+  </div>
+  <a class="diagnostic-btn" onclick="openWhatsApp()">
+    <span>💬</span> Solicitar diagnóstico
+  </a>
+</div>
+
+<!-- ═══ PRECIOS ═══ -->
+<section class="pricing-section">
+  <div class="section-label">Planes</div>
+  <h2 class="section-title reveal">INVERSIÓN<br>TRANSPARENTE</h2>
+  <p class="reveal" style="color:var(--text-muted);font-size:16px;max-width:520px;line-height:1.8;">
+    Precios claros desde el inicio. Eliges el plan según el tamaño del proyecto y empezamos siempre con el diagnóstico gratuito.
+  </p>
+
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="price-name">ARRANQUE</div>
+      <div class="price-desc">Para automatizar una tarea o proceso específico de tu negocio.</div>
+      <div class="price-amount"><span class="currency">$</span>150</div>
+      <div class="price-period">USD · pago único por proyecto</div>
+      <ul class="price-features">
+        <li>1 automatización a medida</li>
+        <li>Conexión de hasta 2 herramientas</li>
+        <li>Diagnóstico gratuito incluido</li>
+        <li>Soporte por 15 días</li>
+      </ul>
+      <a class="price-btn" onclick="openWhatsApp()">Empezar</a>
+    </div>
+
+    <div class="price-card featured reveal reveal-delay-1">
+      <div class="price-badge">Más popular</div>
+      <div class="price-name">CRECIMIENTO</div>
+      <div class="price-desc">Para negocios que quieren automatizar varios procesos clave.</div>
+      <div class="price-amount"><span class="currency">$</span>450</div>
+      <div class="price-period">USD · pago único por proyecto</div>
+      <ul class="price-features">
+        <li>Hasta 4 automatizaciones a medida</li>
+        <li>Integración de múltiples sistemas</li>
+        <li>Chatbot o asistente con IA</li>
+        <li>Diagnóstico gratuito incluido</li>
+        <li>Soporte por 45 días</li>
+      </ul>
+      <a class="price-btn solid" onclick="openWhatsApp()">Empezar</a>
+    </div>
+
+    <div class="price-card reveal reveal-delay-2">
+      <div class="price-name">A MEDIDA</div>
+      <div class="price-desc">Soluciones completas y continuas para operaciones más grandes.</div>
+      <div class="price-amount">Personalizado</div>
+      <div class="price-period">Cotización según alcance</div>
+      <ul class="price-features">
+        <li>Automatizaciones ilimitadas</li>
+        <li>Sistemas de IA personalizados</li>
+        <li>Acompañamiento continuo</li>
+        <li>Optimización mensual</li>
+        <li>Soporte prioritario</li>
+      </ul>
+      <a class="price-btn" onclick="openWhatsApp()">Hablemos</a>
+    </div>
+  </div>
+  <p class="pricing-note">💡 ¿No sabes qué plan necesitas? El diagnóstico gratuito te lo aclara sin compromiso.</p>
+</section>
+
 <!-- ═══ BURBUJA CONTACTO (mitad de página) ═══ -->
 <section class="contact-section">
   <div class="section-label">Contacto</div>
@@ -813,15 +1112,43 @@
 
   <!-- BOTÓN 3: Burbuja central -->
   <div class="contact-bubble-wrapper reveal">
-    <a class="contact-bubble" onclick="openMail()">
-      <div class="bubble-tag">Escríbenos ahora</div>
+    <a class="contact-bubble" onclick="openWhatsApp()">
+      <div class="bubble-tag">Respuesta rápida</div>
       <h3 class="bubble-title">HABLEMOS DE TU NEGOCIO</h3>
-      <p class="bubble-text">Respondemos en menos de 24 horas. Cuéntanos en qué parte de tu operación quieres ganar tiempo y claridad.</p>
+      <p class="bubble-text">Escríbenos por WhatsApp y te respondemos hoy mismo. Cuéntanos en qué parte de tu operación quieres ganar tiempo y ahorrar dinero.</p>
       <div class="bubble-email-label">
-        <span>✉</span>
-        <span>automakeventas@gmail.com</span>
+        <span>💬</span>
+        <span>Escribir por WhatsApp</span>
       </div>
     </a>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section">
+  <div class="section-label">Preguntas Frecuentes</div>
+  <h2 class="section-title reveal">RESOLVEMOS TUS<br><span class="outline">DUDAS</span></h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q">¿Necesito conocimientos técnicos para trabajar con ustedes? <span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Para nada. Tú me cuentas qué tareas te quitan tiempo y yo me encargo de toda la parte técnica. Te entrego la automatización funcionando y te explico de forma sencilla cómo usarla.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Cuánto tiempo tarda implementar una automatización? <span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Depende del proyecto, pero la mayoría de automatizaciones del plan Arranque están listas en pocos días. Proyectos más grandes se entregan por fases para que empieces a ver resultados pronto, no en meses.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Cómo me ahorra dinero la automatización? <span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Reduciendo las horas que tu equipo dedica a tareas repetitivas, evitando errores costosos y permitiéndote crecer sin tener que contratar más personal para lo mismo. En la mayoría de casos la inversión se recupera rápido.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Qué pasa si no sé qué automatizar? <span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Justo para eso existe el diagnóstico gratuito. Analizamos tu operación juntos y te muestro exactamente qué procesos conviene automatizar primero y cuánto podrías ahorrar. Sin compromiso de contratar.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Trabajas con negocios pequeños? <span class="faq-icon">+</span></button>
+      <div class="faq-a"><p>Sí. De hecho, los negocios pequeños y medianos son los que más ganan automatizando, porque liberan tiempo valioso que hoy se pierde en tareas manuales. Hay un plan pensado para cada tamaño.</p></div>
+    </div>
   </div>
 </section>
 
@@ -830,8 +1157,8 @@
   <div class="footer-brand">
     <div class="footer-logo">AUTO<span>MAKE</span></div>
     <p class="footer-desc">Agencia especializada en automatizaciones inteligentes para negocios que quieren crecer sin límites operativos.</p>
-    <!-- BOTÓN 4 ELIMINADO — el footer solo muestra info, el correo como texto -->
-    <div class="footer-email-link" onclick="openMail()" style="cursor:none;">
+    <!-- Correo como canal alternativo -->
+    <div class="footer-email-link" onclick="openMail()">
       <span class="icon">✉</span>
       <span>automakeventas@gmail.com</span>
     </div>
@@ -855,19 +1182,39 @@
   </div>
 </footer>
 
-<script>
-  /* ── Abrir email en cualquier cliente / Gmail ── */
-  function openMail() {
-    /* Intenta primero mailto (Outlook, Apple Mail, etc.)
-       Si el usuario no tiene cliente configurado, abre Gmail web */
+<!-- ═══ WHATSAPP FLOTANTE ═══ -->
+<button class="wa-float" onclick="openWhatsApp()" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 32 32" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 0C7.2 0 0 7.2 0 16c0 2.8.7 5.5 2.1 7.9L0 32l8.3-2.2c2.3 1.3 4.9 1.9 7.7 1.9 8.8 0 16-7.2 16-16S24.8 0 16 0zm0 29.3c-2.5 0-4.9-.7-7-1.9l-.5-.3-5 1.3 1.3-4.8-.3-.5c-1.4-2.2-2.1-4.7-2.1-7.2C2.7 8.6 8.6 2.7 16 2.7S29.3 8.6 29.3 16 23.4 29.3 16 29.3zm7.3-9.9c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.5 1.4-1.5 3.5s1.5 4.1 1.7 4.3c.2.3 3 4.6 7.3 6.4 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.4-1 2.8-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/>
+  </svg>
+</button>
 
+<script>
+  /* ═══════════════════════════════════════════════
+     CONFIGURACIÓN — cambia tu número de WhatsApp aquí
+     Formato: código de país + número, SIN espacios, + ni guiones.
+     Ejemplo Colombia: 573001234567
+     ═══════════════════════════════════════════════ */
+  const WHATSAPP_NUM = '573001234567';
+
+  /* ── Botón principal: abre WhatsApp con mensaje pre-escrito ── */
+  function openWhatsApp() {
+    const mensaje =
+'Hola AutoMake 👋, vi su página web y quiero automatizar tareas de mi negocio con inteligencia artificial para ganar tiempo y ahorrar dinero. ¿Podemos agendar el diagnóstico gratuito?';
+
+    const url = 'https://wa.me/' + WHATSAPP_NUM + '?text=' + encodeURIComponent(mensaje);
+    window.open(url, '_blank');
+  }
+
+  /* ── Alternativa: correo (solo en el footer) ── */
+  function openMail() {
     const asunto = 'Quiero automatizar mi negocio con AutoMake';
 
     const cuerpo =
 'Hola equipo de AutoMake,\n\n' +
 'Vi su página web y me interesa conocer cómo la automatización con inteligencia artificial podría ayudar a mi negocio.\n\n' +
 'Actualmente dedicamos mucho tiempo a tareas repetitivas y me gustaría entender qué procesos podríamos automatizar para ganar tiempo y ahorrar dinero.\n\n' +
-'¿Podríamos agendar una conversación para un diagnóstico inicial?\n\n' +
+'¿Podríamos agendar una conversación para el diagnóstico gratuito?\n\n' +
 'Mis datos:\n' +
 '• Nombre:\n' +
 '• Empresa:\n' +
@@ -886,12 +1233,8 @@
     const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (esMovil) {
-      /* En celular el correo nativo (Gmail, Outlook, Mail, Yahoo...) abre al instante */
       window.location.href = mailto;
     } else {
-      /* En computador intentamos el correo predeterminado del usuario, sea cual sea.
-         Si en ~700ms la página sigue activa (no había cliente configurado),
-         abrimos Gmail web como respaldo universal. */
       const inicio = Date.now();
       window.location.href = mailto;
       setTimeout(() => {
@@ -902,23 +1245,15 @@
     }
   }
 
-  /* ── Cursor personalizado ── */
-  const cursor = document.getElementById('cursor');
-  const ring   = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-  function animCursor() {
-    cursor.style.left = mx + 'px';
-    cursor.style.top  = my + 'px';
-    rx += (mx - rx) * 0.13;
-    ry += (my - ry) * 0.13;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(animCursor);
-  }
-  animCursor();
+  /* ── FAQ acordeón ── */
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
 
   /* ── Scroll reveal ── */
   const reveals = document.querySelectorAll('.reveal');
