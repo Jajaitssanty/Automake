@@ -158,18 +158,103 @@
   }
   @keyframes scroll-line { 0%,100%{opacity:0.3} 50%{opacity:1} }
 
+  /* ── Panel de flujo de automatización (lado derecho) ── */
+  .hero-panel {
+    position: absolute;
+    right: 60px; top: 50%;
+    transform: translateY(-50%);
+    width: 420px;
+    z-index: 3;
+  }
+  .panel-card {
+    background: rgba(20,20,20,0.85);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+  .panel-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .panel-head-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .panel-dots { display: flex; gap: 6px; }
+  .panel-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .panel-dot.r { background: var(--red); }
+  .panel-dot.w { background: rgba(255,255,255,0.25); }
+  .panel-dot.g { background: rgba(255,255,255,0.12); }
+
+  .task-row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: task-in 0.6s forwards;
+  }
+  .task-row:nth-child(1) { animation-delay: 0.3s; }
+  .task-row:nth-child(2) { animation-delay: 0.6s; }
+  .task-row:nth-child(3) { animation-delay: 0.9s; }
+  .task-row:nth-child(4) { animation-delay: 1.2s; }
+  @keyframes task-in {
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .task-check {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--red); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: #fff;
+    box-shadow: 0 0 14px var(--red-glow);
+  }
+  .task-info { flex: 1; min-width: 0; }
+  .task-name { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 3px; }
+  .task-status {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px; letter-spacing: 0.1em; color: var(--red);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .task-status::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--red); animation: blink 1.5s infinite;
+  }
+  .panel-footer {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .panel-metric-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 34px;
+    color: var(--white); line-height: 1;
+  }
+  .panel-metric-num span { color: var(--red); }
+  .panel-metric-label {
+    font-size: 10px; letter-spacing: 0.1em; color: var(--text-muted);
+    text-transform: uppercase; text-align: right; max-width: 130px; line-height: 1.4;
+  }
+
   /* Rotating badge */
   .hero-badge {
-    position: absolute; right: 60px; bottom: 80px;
-    width: 120px; height: 120px;
+    position: absolute; right: 60px; bottom: 50px;
+    width: 110px; height: 110px;
     border: 1px solid rgba(255,255,255,0.08); border-radius: 50%;
     animation: spin 22s linear infinite;
+    z-index: 4;
   }
   .hero-badge svg { width: 100%; height: 100%; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .hero-badge-center {
-    position: absolute; right: 60px; bottom: 80px;
-    width: 120px; height: 120px;
+    position: absolute; right: 60px; bottom: 50px;
+    width: 110px; height: 110px;
     display: flex; align-items: center; justify-content: center;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 12px; letter-spacing: 0.1em; color: var(--red);
@@ -228,11 +313,16 @@
   }
   .problem-card:hover::before { height: 100%; }
   .problem-num {
-    font-family: 'Bebas Neue', sans-serif; font-size: 60px;
-    color: rgba(255,255,255,0.04); line-height: 1; margin-bottom: 18px;
-    transition: color 0.4s;
+    font-family: 'Bebas Neue', sans-serif; font-size: 62px;
+    line-height: 1; margin-bottom: 18px;
+    -webkit-text-stroke: 1.5px rgba(232,0,26,0.55);
+    color: transparent;
+    transition: -webkit-text-stroke 0.4s, color 0.4s;
   }
-  .problem-card:hover .problem-num { color: rgba(232,0,26,0.09); }
+  .problem-card:hover .problem-num {
+    -webkit-text-stroke: 1.5px var(--red);
+    color: rgba(232,0,26,0.12);
+  }
   .problem-title { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
   .problem-text { font-size: 14px; line-height: 1.75; color: var(--text-muted); }
 
@@ -448,6 +538,10 @@
   .reveal-delay-4 { transition-delay: 0.4s; }
 
   /* ───── RESPONSIVE ───── */
+  @media (max-width: 1300px) and (min-width: 1025px) {
+    .hero-panel { width: 340px; right: 40px; }
+    .panel-card { padding: 22px; }
+  }
   @media (max-width: 1024px) {
     nav { padding: 18px 28px; }
     .hero, .section, .solution-section, .process-section, .contact-section { padding: 90px 28px 70px; }
@@ -463,6 +557,7 @@
     .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
     .contact-bubble { padding: 40px 28px; }
     .hero-badge, .hero-badge-center { display: none; }
+    .hero-panel { display: none; }
   }
 </style>
 </head>
@@ -505,6 +600,54 @@
   </div>
 
   <div class="hero-scroll reveal reveal-delay-3">Scroll para explorar</div>
+
+  <!-- Panel de flujo de automatización -->
+  <div class="hero-panel">
+    <div class="panel-card">
+      <div class="panel-head">
+        <span class="panel-head-title">Flujo en ejecución</span>
+        <div class="panel-dots">
+          <span class="panel-dot r"></span>
+          <span class="panel-dot w"></span>
+          <span class="panel-dot g"></span>
+        </div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check">✓</div>
+        <div class="task-info">
+          <div class="task-name">Respuesta a clientes</div>
+          <div class="task-status">Automatizado con IA</div>
+        </div>
+      </div>
+      <div class="task-row">
+        <div class="task-check">✓</div>
+        <div class="task-info">
+          <div class="task-name">Seguimiento de leads</div>
+          <div class="task-status">Automatizado con IA</div>
+        </div>
+      </div>
+      <div class="task-row">
+        <div class="task-check">✓</div>
+        <div class="task-info">
+          <div class="task-name">Generación de reportes</div>
+          <div class="task-status">Automatizado con IA</div>
+        </div>
+      </div>
+      <div class="task-row">
+        <div class="task-check">✓</div>
+        <div class="task-info">
+          <div class="task-name">Sincronización de datos</div>
+          <div class="task-status">Automatizado con IA</div>
+        </div>
+      </div>
+
+      <div class="panel-footer">
+        <div class="panel-metric-num">24<span>/7</span></div>
+        <div class="panel-metric-label">Operando sin descanso</div>
+      </div>
+    </div>
+  </div>
 
   <div class="hero-badge">
     <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
